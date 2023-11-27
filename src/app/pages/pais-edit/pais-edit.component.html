@@ -1,1 +1,74 @@
-<p>pais-edit works!</p>
+<div class="container mt-3">
+    <form [formGroup]="form">
+        <p class="text-center">Editar País</p>
+
+        <div>
+
+            <label 
+                for="nombre"
+                class="form-label">Nombre del Pais
+            </label>
+            <div class="row">
+                <div class="col-md-4">
+                    <input 
+                type="text"
+                id="nombre"
+                class="form-control"
+                placeholder="país"
+                formControlName="nombre" 
+            />
+                </div>
+            </div>
+
+            <button 
+                class="btn btn-primary mt-3"
+                (click)="crearCiudad()">
+                Agregar Ciudad
+            </button>
+        </div>
+
+        <div
+            class="mt-4 mb-4"
+            formArrayName="ciudades"
+            *ngFor="let ciudad of ciudadesControl; let i = index">
+            
+            <form class="row g-3" [formGroupName]="i">
+                
+                <div class="col-auto">
+                    <label 
+                        for="city"
+                        class="form-label">Nombre de la Ciudad
+                    </label>
+                    <input 
+                        type="text"
+                        id="city"
+                        class="form-control"
+                        placeholder="ciudad"
+                        formControlName="nombre" 
+                    />
+                </div>
+
+                <div class="col-auto">
+                    <label 
+                        for="lugar"
+                        class="form-label">Nombre del Lugar Turístico
+                    </label>
+                    <input 
+                        type="text"
+                        id="lugar"
+                        class="form-control"
+                        placeholder="lugar"
+                        formControlName="lugarTuristico" 
+                    />
+                </div>
+            </form>
+        </div>
+
+    </form>
+
+    <button 
+        class="btn btn-success mt-3"
+        (click)="guardarPais()">
+        Guardar País
+    </button>
+</div>

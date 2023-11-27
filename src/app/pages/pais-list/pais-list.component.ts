@@ -5,6 +5,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Observable, debounceTime } from 'rxjs';
 import { Pais } from 'src/app/common/pais.interface';
 import { Router } from '@angular/router';
+import { state } from '@angular/animations';
 
 @Component({
   selector: 'app-pais-list',
@@ -36,11 +37,12 @@ export class PaisListComponent {
   }
 
   editarPais(pais: Pais) {
-
+    this._router.navigateByUrl('paises/edit', {state: {pais}})
   }
 
   eliminarPais(pais: Pais) {
-
+    if(confirm(`Seguro de borrar a ${pais.nombre}`))
+      this._paisService.deletePais(pais.id);
   }
 
 }
